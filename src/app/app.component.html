@@ -1,8 +1,113 @@
-<h3 style="text-align:center;">GSap Animation in Angular</h3>
-<div>
-  <div class="box first"></div>
-  <div class="box second">
-    <div class="square" #square></div>
-    <!-- <div class="square2"></div> -->
+<div class="menu-icon" (click)="showMenu()">
+  <svg-icon symbol="menu" w='25' h="25"></svg-icon>
+</div>
+<div class="logo">
+  <img src="../assets/image/logo.png" alt="">
+</div>
+<div style="--clip:0%" class="overlay-menu">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Work</a></li>
+    <li><a href="#">About me</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</div>
+<div class="close" *ngIf="showCloseBtn" (click)="hideMenu()">
+  <svg-icon symbol="x" w='28' h="28"></svg-icon>
+</div>
+<div div class="my-scrollbar scroller">
+  <div class="main">
+    <div style="--path:100%" class="background">
+
+    </div>
+    <img class="bg-image" src="../assets/image/new-mockup.png" alt="" srcset="">
+    <div class="intoduction">
+      <h1 class="heading">Hello,</h1>
+      <p>I am Rahul Kumar</p>
+      <p>An UI Developer.</p>
+      <div class="arrow">
+        <svg-icon symbol="arrow-down" w='28' h="28"></svg-icon>
+      </div>
+    </div>
   </div>
+  <h1 class="other-head mb">Work</h1>
+  <div class="gallery">
+    <div class="left">
+      <div class="detailsWrapper">
+        <div class="details section-one">
+          <div class=" heading">Portfolio</div>
+          <p>Used Gsap for Animation Stuff</p>
+          <p>Simple Portfolio fom me used Tech stack :</p>
+          <p>Html</p>
+          <p>Scss</p>
+          <p>Typescript</p>
+          <p>Angular</p>
+          <!-- <div class="text"></div>
+          <div class="text"></div>
+          <div class="text"></div>
+          <div class="text"></div> -->
+        </div>
+        <div class="details section-two">
+          <div class="other-head" style="text-align:left;">Ecommerce</div>
+          <p>For front-End Used Tech stack :</p>
+          <p>Html</p>
+          <p>Scss</p>
+          <p>Typescript</p>
+          <p>Angular</p>
+          <p>For Backend Used Mongo-DB,Express,NodeJs</p>
+          <p>Included Authentication,jwt,add-to-cart,user and admin controls</p>
+        </div>
+        <!-- <div class="details section-three">
+          <div class="headline blue"></div>
+          <div class="text"></div>
+          <div class="text"></div>
+          <div class="text"></div>
+          <div class="text"></div>
+        </div> -->
+
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="photos">
+        <div class=" photo first-image"></div>
+        <div class=" photo second-image"></div>
+        <!-- <div class=" photo blue"></div> -->
+      </div>
+    </div>
+  </div>
+  <h1 class="other-head mb mt-2">Technology I Have Used So For</h1>
+  <div class="slids">
+    <div class="slid"></div>
+    <div class="slid"></div>
+    <div class="slid"></div>
+    <div class="slid"></div>
+    <div class="slid"></div>
+    <div class="slid"></div>
+    <div class="slid"></div>
+  </div>
+  <h1 class="other-head mt-2">About me</h1>
+  <section class="outer">
+    <div class="outer-left">
+      <p>Hi, folks I am Rahul Kumar. I have approx 3 years Experiance</p>
+      <p>In UI Development,Currently I am working</p>
+      <p>In a startup,Atai Labs</p>
+      <p>Feel Free to reach out to me If you need an UI</p>
+      <p>Developer</p>
+      <p>location: Hyderabad,near Q-city</p>
+      <p>Contact-no: 8840476418</p>
+      <p>View Resume:
+        <a class="white" href="../assets/pdf/Rahul's_Resume.pdf" target="_blank" style="text-decoration:none;">
+          <svg-icon symbol="eye" w='25' h="25">
+          </svg-icon>
+        </a>
+      </p>
+    </div>
+    <div class="outer-right">
+      <div class="avtar">
+        <img src="../assets/image/my-photo.png" alt="">
+      </div>
+    </div>
+  </section>
+  <h1 class="other-head mb mt-1">Let`s Connect</h1>
 </div>
