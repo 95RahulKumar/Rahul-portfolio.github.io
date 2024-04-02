@@ -1,6 +1,4 @@
-import { trigger } from '@angular/animations';
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   OnInit,
@@ -8,24 +6,27 @@ import {
 } from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { timeInterval } from 'rxjs';
 import LocomotiveScroll from 'locomotive-scroll';
 import Scrollbar from 'smooth-scrollbar';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
+
 export class AppComponent implements OnInit {
   title = 'Gsap';
-  scroll!: LocomotiveScroll;
-
   @ViewChild('square') square!: ElementRef;
   @ViewChild('scrollContent') scrollContent!: ElementRef;
+
+  scroll!: LocomotiveScroll;
   showCloseBtn: boolean = false;
+
   constructor() {
     gsap.registerPlugin(ScrollTrigger);
   }
+
   ngOnInit(): void {
     this.animate();
     this.applyBg();
@@ -69,7 +70,7 @@ export class AppComponent implements OnInit {
       },
     }).to('.photo:not(:first-child)', {
       y: 0,
-      ease: 'power2', 
+      ease: 'power2',
       scrollTrigger: {
         trigger: '.gallery',
         start: 'top top',
@@ -78,7 +79,7 @@ export class AppComponent implements OnInit {
         pin: '.right',
         pinType: 'transform',
         snap: 1 / (photos.length - 1),
-        scrub: true, 
+        scrub: true,
       },
     });
   }
@@ -95,14 +96,14 @@ export class AppComponent implements OnInit {
         toggleActions: 'restart none restart none',
         onEnter: () => {
           gsap.to('.gallery', {
-            duration: 1, 
+            duration: 1,
             backgroundColor: '#FAE1EE',
             ease: 'power1.inOut',
           });
         },
         onLeaveBack: () => {
           gsap.to('.gallery', {
-            duration: 1, 
+            duration: 1,
             ease: 'power1.inOut',
             backgroundColor: '#FFFFFF',
           });
@@ -120,14 +121,14 @@ export class AppComponent implements OnInit {
         toggleActions: 'restart none restart none',
         onEnter: () => {
           gsap.to('.gallery', {
-            duration: 1, 
+            duration: 1,
             ease: 'power1.inOut',
             backgroundColor: '#E0F0FF',
           });
         },
         onLeaveBack: () => {
           gsap.to('.gallery', {
-            duration: 1, 
+            duration: 1,
             ease: 'power1.inOut',
             backgroundColor: '#FAE1EE',
           });
