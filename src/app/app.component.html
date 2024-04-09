@@ -1,3 +1,4 @@
+<!-- <div *ngIf="showLoader==false"> -->
 <div class="menu-icon" (click)="showMenu()">
   <svg-icon symbol="menu" w='25' h="25"></svg-icon>
 </div>
@@ -24,68 +25,132 @@
     <div class="intoduction">
       <h1 class="heading">Hello,</h1>
       <p>I am Rahul Kumar</p>
-      <p>An UI Developer.</p>
-      <div class="arrow">
-        <svg-icon symbol="arrow-down" w='28' h="28"></svg-icon>
+      <p>A FullStack Developer.</p>
+      <div class="arrow-wrapper">
+        <div class="arrow">
+          <svg-icon symbol="arrow-down" w='28' h="28"></svg-icon>
+        </div>
+        <div class="scroll-arrow">
+          <p class="scroll-text">Scroll down</p>
+          <p class="scroll-text">Scroll down</p>
+          <p class="scroll-text">Scroll down</p>
+        </div>
       </div>
     </div>
   </div>
   <h1 class="other-head mb">Work</h1>
   <div class="gallery">
-    <div class="left">
-      <div class="detailsWrapper">
-        <div class="details section-one">
-          <div class=" heading">Portfolio</div>
-          <p>Used Gsap for Animation Stuff</p>
-          <p>Simple Portfolio fom me used Tech stack :</p>
-          <p>Html</p>
-          <p>Scss</p>
-          <p>Typescript</p>
-          <p>Angular</p>
-          <!-- <div class="text"></div>
-          <div class="text"></div>
-          <div class="text"></div>
-          <div class="text"></div> -->
-        </div>
-        <div class="details section-two">
-          <div class="other-head" style="text-align:left;">Ecommerce</div>
-          <p>For front-End Used Tech stack :</p>
-          <p>Html</p>
-          <p>Scss</p>
-          <p>Typescript</p>
-          <p>Angular</p>
-          <p>For Backend Used Mongo-DB,Express,NodeJs</p>
-          <p>Included Authentication,jwt,add-to-cart,user and admin controls</p>
-        </div>
-        <!-- <div class="details section-three">
-          <div class="headline blue"></div>
-          <div class="text"></div>
-          <div class="text"></div>
-          <div class="text"></div>
-          <div class="text"></div>
-        </div> -->
+    <div class="gallery__container">
+      <div class="left">
+        <div class="detailsWrapper">
+          <div class="details section-one">
+            <div class=" heading">Portfolio</div>
+            <p>Used Gsap for Animation Stuff</p>
+            <p>Simple Portfolio fom me used Tech stack :</p>
+            <p>Html</p>
+            <p>Scss</p>
+            <p>Typescript</p>
+            <p>Angular</p>
+            <!-- <div class="text"></div>
+              <div class="text"></div>
+              <div class="text"></div>
+              <div class="text"></div> -->
+          </div>
+          <div class="details section-two">
+            <div class="other-head" style="text-align:left;">Ecommerce</div>
+            <p>For front-End Used Tech stack :</p>
+            <p>Html</p>
+            <p>Scss</p>
+            <p>Typescript</p>
+            <p>Angular</p>
+            <p>For Backend Used Mongo-DB,Express,NodeJs</p>
+            <p>Included Authentication,jwt,add-to-cart,user and admin controls</p>
+          </div>
+          <!-- <div class="details section-three">
+              <div class="headline blue"></div>
+              <div class="text"></div>
+              <div class="text"></div>
+              <div class="text"></div>
+              <div class="text"></div>
+            </div> -->
 
+        </div>
       </div>
-    </div>
 
-    <div class="right">
-      <div class="photos">
-        <div class=" photo first-image"></div>
-        <div class=" photo second-image"></div>
-        <!-- <div class=" photo blue"></div> -->
+      <div class="right">
+        <div class="photos">
+          <div class=" photo first-image"></div>
+          <div class=" photo second-image"></div>
+          <!-- <div class=" photo blue"></div> -->
+        </div>
       </div>
+
     </div>
   </div>
   <h1 class="other-head mb mt-2">Technology I Have Used So For</h1>
-  <div class="slids">
-    <div class="slid"></div>
-    <div class="slid"></div>
-    <div class="slid"></div>
-    <div class="slid"></div>
-    <div class="slid"></div>
-    <div class="slid"></div>
-    <div class="slid"></div>
+  <div class="slid-container">
+    <div class="slid">
+      <div class="slid__img">
+        <img src="../assets/image/github.png" alt="">
+      </div>
+      <p class="slid__text">GitHub</p>
+    </div>
+    <div class="slid">
+      <div class="slid__img">
+        <img src="../assets/image/git.png" alt="">
+      </div>
+      <p class="slid__text">Git</p>
+    </div>
+    <div class="slid">
+      <div class="slid__img">
+        <img src="../assets/image/tailwind.png" alt="">
+      </div>
+      <p class="slid__text">TailWind Css</p>
+    </div>
+    <div class="slid">
+      <div class="slid__img">
+        <img src="../assets/image/scss.png" alt="">
+      </div>
+      <p class="slid__text">Sass</p>
+    </div>
+    <div class="slid">
+      <div class="slid__img">
+        <img src="../assets/image/js.png" alt="">
+      </div>
+      <p class="slid__text">JavaScript</p>
+    </div>
+    <div class="slid">
+      <div class="slid__img">
+        <img src="../assets/image/css.jpg" alt="">
+      </div>
+      <p class="slid__text">Css</p>
+    </div>
+    <div class="slid">
+      <div class="slid__img">
+        <img src="../assets/image/html.png" alt="">
+      </div>
+      <p class="slid__text">Html</p>
+    </div>
+    <div class="slid">
+      <div class="slid__img">
+        <img src="../assets/image/angular.png" alt="">
+      </div>
+      <p class="slid__text">Angular</p>
+    </div>
+    <div class="slid">
+      <div class="slid__img">
+        <img src="../assets/image/ts.png" alt="">
+      </div>
+      <p class="slid__text">TypeScript</p>
+    </div>
+    <div class="slid">
+      <div class="slid__img">
+        <img src="../assets/image/rxjs.png" alt="">
+      </div>
+      <p class="slid__text">Rxjs</p>
+    </div>
   </div>
+
   <h1 class="other-head mt-2">About me</h1>
   <section class="outer">
     <div class="outer-left">
@@ -96,12 +161,17 @@
       <p>Developer</p>
       <p>location: Hyderabad,near Q-city</p>
       <p>Contact-no: 8840476418</p>
-      <p>View Resume:
-        <a class="white" href="../assets/pdf/Rahul's_Resume.pdf" target="_blank" style="text-decoration:none;">
-          <svg-icon symbol="eye" w='25' h="25">
-          </svg-icon>
-        </a>
-      </p>
+      <a class="resume-btn" href="../assets/pdf/Rahul's_Resume.pdf">
+        <span class="white" href="../assets/pdf/Rahul's_Resume.pdf" target="_blank" style="text-decoration:none;">
+          View Resume
+        </span>
+        <span class="white" href="../assets/pdf/Rahul's_Resume.pdf" target="_blank" style="text-decoration:none;">
+          View Resume
+        </span>
+        <span class="white" href="../assets/pdf/Rahul's_Resume.pdf" target="_blank" style="text-decoration:none;">
+          View Resume
+        </span>
+      </a>
     </div>
     <div class="outer-right">
       <div class="avtar">
@@ -109,5 +179,52 @@
       </div>
     </div>
   </section>
-  <h1 class="other-head mb mt-1">Let`s Connect</h1>
+  <section class="footer-section">
+    <h1 class="other-head mb">Let`s Connect</h1>
+    <div class="lets-connect">
+      <svg (click)="openMail()" class="foot-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 729.43 729.425"
+        style="translate: none; rotate: none; scale: none;">
+        <defs>
+          <filter id="a" x="0" y="0" width="729.43" height="729.425" filterUnits="userSpaceOnUse">
+            <feOffset dy="3" input="SourceAlpha"></feOffset>
+            <feGaussianBlur stdDeviation="15" result="blur"></feGaussianBlur>
+            <feFlood flood-opacity=".02"></feFlood>
+            <feComposite operator="in" in2="blur"></feComposite>
+            <feComposite in="SourceGraphic"></feComposite>
+          </filter>
+        </defs>
+        <g data-name="Group 1200">
+          <g filter="url(#a)" data-name="Group 1199">
+            <path id="path" data-name="Path 418"
+              d="M556.58 105.892A319.757 319.757 0 0 0 45.004 361.709c0 176.559 143.154 319.712 319.713 319.712 173.826 0 315.135-138.746 319.541-311.495q.176-4.109.176-8.218V41.997a159.711 159.711 0 0 0-127.854 63.895Z"
+              fill="--path:100%"></path>
+          </g>
+        </g>
+      </svg>
+      <div class="lets-connect__des" (click)="openMail()">
+        <p id="split-text">Click to</p>
+        <h1 id="split-head">Get in touch</h1>
+      </div>
+    </div>
+    <div class="link">
+      <p class="link__email" (click)="openMail()">mrrahulkumarvns@gmail.com</p>
+      <div class="link__icon">
+        <a href="https://www.facebook.com/profile.php?id=100022081577498">
+          <svg-icon symbol="facebook" w='20' h="20"></svg-icon>
+        </a>
+        <a href="https://www.linkedin.com/in/rahulkumarvns221105/">
+          <svg-icon symbol="linkdin" w='20' h="20"></svg-icon>
+        </a>
+        <a href="javascript:void(0)" (click)="openMail()">
+          <svg-icon symbol="mail" w='20' h="20"></svg-icon>
+        </a>
+        <a href="https://github.com/95RahulKumar">
+          <svg-icon symbol="github" w='20' h="20"></svg-icon>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
 </div>
+<!-- </div> -->

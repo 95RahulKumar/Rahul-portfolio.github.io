@@ -1,16 +1,9 @@
-import { trigger } from '@angular/animations';
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { timeInterval } from 'rxjs';
 import LocomotiveScroll from 'locomotive-scroll';
 import Scrollbar from 'smooth-scrollbar';
+import SplitType from 'split-type';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,48 +12,114 @@ import Scrollbar from 'smooth-scrollbar';
 export class AppComponent implements OnInit {
   title = 'Gsap';
   scroll!: LocomotiveScroll;
-
+  showLoader = true;
+  Myemail: string = 'mrrahulkumarvns@gmail.com';
   @ViewChild('square') square!: ElementRef;
   @ViewChild('scrollContent') scrollContent!: ElementRef;
   showCloseBtn: boolean = false;
   constructor() {
     gsap.registerPlugin(ScrollTrigger);
-    // gsap.registerPlugin(CSSRulePlugin);
   }
+  initLoader = async () => {
+    await this.loader();
+  };
   ngOnInit(): void {
-    // this.something();
+    this.initLoader();
+    this.initializeSmoothScroll();
+    this.text();
     this.animate();
     this.applyBg();
     this.slids();
+    this.splitText();
   }
 
-  animate() {
-    const scroller = document.querySelector('.scroller') as any;
-    const bodyScrollBar = Scrollbar.init(scroller, {
-      damping: 0.1,
-      // delegateTo: document,
-      renderByPixels: true,
-      delegateTo: document,
+  loader(): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      setTimeout(async () => {
+        this.showLoader = false;
+        resolve(true);
+      }, 2000);
     });
+  }
 
-    ScrollTrigger.scrollerProxy('.scroller', {
-      scrollTop(value) {
-        if (arguments.length) {
-          bodyScrollBar.scrollTop = value as number;
-        }
-        return bodyScrollBar.scrollTop;
+  initializeSmoothScroll(): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      const scroller = document?.querySelector('.scroller') as any;
+      const bodyScrollBar = Scrollbar?.init(scroller, {
+        damping: 0.1,
+        renderByPixels: true,
+        delegateTo: document,
+      });
+      ScrollTrigger?.scrollerProxy('.scroller', {
+        scrollTop(value) {
+          if (arguments?.length) {
+            bodyScrollBar.scrollTop = value as number;
+          }
+          return bodyScrollBar.scrollTop;
+        },
+      });
+      bodyScrollBar.addListener(ScrollTrigger.update);
+      ScrollTrigger.defaults({ scroller: scroller });
+      resolve(true);
+    });
+  }
+
+  splitText() {
+    const headtext = new SplitType('#split-head');
+    let tl = gsap.timeline();
+    tl.fromTo(
+      '#split-head .word .char',
+      {
+        yPercent: 100,
+        fontFamily: '"Dancing Script", cursiv52',
+        opacity: 0,
       },
-    });
+      {
+        yPercent: 0,
+        ease: 'power1.inOut',
+        stagger: 0.1,
+        repeat: -1, // Setting repeat to -1 for infinite repetition
+        duration: 0.7, // Setting duration of animation to 8 seconds
+        delay: 0.2,
+        opacity: 1,
+      }
+    );
+  }
 
-    bodyScrollBar.addListener(ScrollTrigger.update);
-
-    ScrollTrigger.defaults({ scroller: scroller });
-
+  text() {
+    gsap.fromTo(
+      '.white',
+      {
+        xPercent: 0,
+        ease: 'linear',
+      },
+      {
+        xPercent: -105,
+        ease: 'linear',
+        repeat: -1, // Setting repeat to -1 for infinite repetition
+        duration: 5, // Setting duration of animation to 8 seconds
+      }
+    );
+    gsap.fromTo(
+      '.scroll-text',
+      {
+        xPercent: 0,
+        ease: 'linear',
+      },
+      {
+        xPercent: -100,
+        ease: 'linear',
+        repeat: -1, // Setting repeat to -1 for infinite repetition
+        duration: 4, // Setting duration of animation to 8 seconds
+      }
+    );
+  }
+  animate() {
     let tl = gsap.timeline();
     let photos = gsap.utils.toArray('.photo');
     gsap.set('.photo:not(:first-child)', { y: '100%' });
     tl.to('.background', {
-      '--path': '15%',
+      '--path': '17%',
       duration: 2,
       ease: 'power2',
       scrollTrigger: {
@@ -164,52 +223,18 @@ export class AppComponent implements OnInit {
       },
     });
   }
-  something() {
-    gsap.to('.square', {
-      x: 700,
-      duration: 3,
-      scrollTrigger: {
-        trigger: '.square',
-        // now here we will trigger the ele on diff point of viewport
-        //by default trigger point is starting point of ele coms into viewport
-        // start: 400, // diff way to set value eg 400(400px)
-        // another way to  give is string value "top center" when trigger element top will be
-        // center of viewport
-        start: 'top 80%', // scroll-start marker mesure  when ele top will remains 30% away from viewport
-        markers: true, // a helper marker in browser
-        // to see end commenting x and instead of changing x value
-        // we eill change the class
-        // toggleClass: 'red',
-        end: 'top 30%',
-        // toggleActions: 'restart pause resume reset',
-        //              onEnter(play/restart) onLeave(pause/reverse)  onEntetBack(resume) onLeaveBack(reset/complete)
-        // onEnter ↓
-        //onEntetBack ↓
-        // onLeave ↑
-        // onLeaveBack ↑
-        //deferenttoggleAction can be used::: play pause resume reverse restart reset complete none (any action can be triggered)
-        // this is used to repeate animation
-        // it will take a string value with four diff value default is
-        // play none none none
-        toggleActions: 'restart none none none',
-        //scrub: true/number, // it titely cupled to scroll (means animation will move along with
-        // scroller it can be given in number also for more smoothness)
-        scrub: 2,
-      },
-    });
-  }
   //sliding technoligy section
   slids() {
     let sections = gsap.utils.toArray('.slid');
 
     gsap.to(sections, {
       xPercent: -80 * (sections.length - 1),
+      yPercent: 0,
       ease: 'power2',
       scrollTrigger: {
-        trigger: '.slids',
+        trigger: '.slid-container',
         pin: '.slid',
         scrub: true,
-        // snap: 1 / (sections.length - 1),
         start: 'top center',
         end: 'bottom center',
       },
@@ -244,5 +269,13 @@ export class AppComponent implements OnInit {
         onComplete: () => resolve(true),
       });
     });
+  }
+
+  //writing a function to open a mail
+  openMail() {
+    window.open(
+      `https://mail.google.com/mail/?view=cm&fs=1&to=${this.Myemail}`,
+      '_blank'
+    );
   }
 }

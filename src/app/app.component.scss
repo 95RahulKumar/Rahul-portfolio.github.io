@@ -85,6 +85,12 @@ body {
 .gallery {
   display:flex;
   // outline:1px solid red;
+  &__container{
+    display: flex;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+  }
 }
 
 .left {
@@ -260,6 +266,7 @@ z-index: 100000;
 }
 .outer{
   height:80vh;
+  max-width:1200px;
   width:90%;
   display:flex;
   justify-content: space-between;
@@ -285,7 +292,7 @@ z-index: 100000;
   display:flex;
   justify-content:center;
   flex-direction: column;
-  align-items:start;
+  align-items:inherit;
 }
 
 .avtar{
@@ -308,22 +315,215 @@ z-index: 100000;
 
 // class for slids
 
-.slids{
-  width: 100%;
-  height:40vh;
+.slid-container{
+  height:30vh;
   padding:20px 0;
-  background:red;
   display: flex;
   align-items: center;
   justify-content: space-between;
   overflow: hidden;
+  gap:20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 90%;
+  position: relative;
+  // padding: 0 25px;
   .slid{
-   width: 300px;
-   height:100%;
+   width: 100px;
+   height:100px;
+   border-radius: 50%;
    background:#fff;
-  // border:1px solid #cccc;
-   border-radius:20px;
-   margin-right:20px;
    flex-shrink:0;
+   transition:  box-shadow 0.5s linear;
+   cursor: pointer;
+   display:flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  &__img{
+    width: 50px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   img{
+    width: 100%;
+    object-fit:cover;
+   }
   }
+  &__text{
+    font-size:13px;
+  }
+  }
+  .slid:hover{
+    box-shadow: rgba(2, 231, 2, 0.3) 0px 0px 0px 3px;
+  }
+}
+
+
+#container {
+  background-color:grey;
+  display:flex;
+  flex-wrap:wrap;
+  flex-direction:column;
+  width:100vw;
+  height:40vh;
+}
+
+.module{
+  height:100%;
+  display:flex;
+}
+
+.green{
+  width:500px;
+  background-color:green;
+}
+
+.yellow{
+  width:1300px;
+  background-color:yellow;
+}
+
+.purple{
+  width:800px;
+  background-color:purple;
+}
+
+.orange{
+  width:800px;
+  background-color:purple;
+}
+
+.blue{
+  width:2100px;
+  background-color:blue;
+}
+
+.red{
+  width:900px;
+  background-color:red;
+}
+
+.lets-connect{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  svg{
+    max-width:350px;
+  }
+  &__des{
+    position: absolute;
+    text-align: center;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    cursor: pointer;
+    p{
+      font-size: 23px;
+      margin-bottom:0 !important;
+      font-family:"Dancing Script", cursiv52;
+    }
+    h1{
+      font-size: 40px;
+      overflow: hidden;
+      margin: 0;
+    }
+
+  }
+}
+
+.footer-section{
+  padding-top: 3.5em;
+  padding-bottom: 3.5em;
+  background:rgb(241 241 241 / 40%);
+
+  h1{
+    margin-bottom: 1em;
+  }
+}
+
+#path {
+  fill: #fff; /* Initial fill color */
+  cursor: pointer;
+}
+
+
+.resume-btn{
+  display: flex;
+  text-decoration: none;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  max-width: 117px;
+  background:#0084ff;
+  padding: 5px 10px;
+  margin-top: 10px;
+  border-radius: 20px;
+  transition: box-shadow 0.5s ease-in-out;
+  span{
+    display: inline-flex;
+    font-family: "Dancing Script", cursiv52 ;
+    font-size: 20px;
+    color:#fff;
+    margin-right:5px;
+   min-width:117px;
+  //  animation:anim 8s linear infinite;
+  }
+}
+
+.resume-btn:hover{
+  box-shadow: rgba(2, 231, 2, 0.3) 0px 0px 0px 3px;
+}
+
+.link{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width:1200px;
+  width:90%;
+  margin:2.5em auto 0 auto;
+  &__icon{
+    min-width:200px;
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  }
+  &__icon a{
+    display: inline-block;
+    max-width:20px;
+  }
+  &__icon svg-icon{
+  color: #000;
+  }
+  &__email{
+    cursor: pointer;
+    border-bottom: 1px solid #000;
+  }
+}
+
+// scroll-arrow animation css
+.arrow-wrapper{
+  display:flex;
+  align-items: center;
+  gap:20px;
+}
+.scroll-arrow{
+  margin-top: 10px;
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  border-radius: 20px;
+  background: rgb(255, 254, 254);
+  max-width: 120px;
+  overflow: hidden;
+  p{
+    min-width:120px;
+    font-size:22px;
+    color:#111;
+  }
+}
+#split-text .char{
+    transform: translateY(10px);
 }
