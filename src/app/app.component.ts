@@ -1,4 +1,12 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import LocomotiveScroll from 'locomotive-scroll';
@@ -9,7 +17,7 @@ import SplitType from 'split-type';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   title = 'Gsap';
   scroll!: LocomotiveScroll;
   showLoader = true;
@@ -17,20 +25,30 @@ export class AppComponent implements OnInit {
   @ViewChild('square') square!: ElementRef;
   @ViewChild('scrollContent') scrollContent!: ElementRef;
   showCloseBtn: boolean = false;
-  constructor() {
+  constructor(private cdref: ChangeDetectorRef) {
     gsap.registerPlugin(ScrollTrigger);
   }
+
+  ngOnDestroy(): void {
+    ScrollTrigger.getAll().forEach((t) => t.kill());
+  }
+
   initLoader = async () => {
     await this.loader();
-  };
-  ngOnInit(): void {
-    this.initLoader();
+    this.cdref.detectChanges();
+    this.cdref.markForCheck();
+    this.Animatehome();
     this.initializeSmoothScroll();
     this.text();
     this.animate();
     this.applyBg();
     this.slids();
     this.splitText();
+  };
+
+  ngOnInit(): void {}
+  ngAfterViewInit(): void {
+    this.initLoader();
   }
 
   loader(): Promise<boolean> {
@@ -38,32 +56,43 @@ export class AppComponent implements OnInit {
       setTimeout(async () => {
         this.showLoader = false;
         resolve(true);
-      }, 2000);
+      }, 4000);
     });
   }
 
-  initializeSmoothScroll(): Promise<boolean> {
-    return new Promise((resolve, reject) => {
-      const scroller = document?.querySelector('.scroller') as any;
-      const bodyScrollBar = Scrollbar?.init(scroller, {
-        damping: 0.1,
-        renderByPixels: true,
-        delegateTo: document,
-      });
-      ScrollTrigger?.scrollerProxy('.scroller', {
-        scrollTop(value) {
-          if (arguments?.length) {
-            bodyScrollBar.scrollTop = value as number;
-          }
-          return bodyScrollBar.scrollTop;
-        },
-      });
-      bodyScrollBar.addListener(ScrollTrigger.update);
-      ScrollTrigger.defaults({ scroller: scroller });
-      resolve(true);
+  initializeSmoothScroll() {
+    const scroller = document?.querySelector('.scroller') as any;
+    const bodyScrollBar = Scrollbar?.init(scroller, {
+      damping: 0.1,
+      renderByPixels: true,
+      delegateTo: document,
     });
+    ScrollTrigger?.scrollerProxy('.scroller', {
+      scrollTop(value) {
+        if (arguments?.length) {
+          bodyScrollBar.scrollTop = value as number;
+        }
+        return bodyScrollBar.scrollTop;
+      },
+    });
+    bodyScrollBar.addListener(ScrollTrigger.update);
+    ScrollTrigger.defaults({ scroller: scroller });
   }
 
+  Animatehome() {
+    gsap.fromTo(
+      ['.main'],
+      {
+        opacity: 0,
+        ease: 'power1.inOut',
+      },
+      {
+        opacity: 1,
+        duration: 0.5,
+        ease: 'power1.inOut',
+      }
+    );
+  }
   splitText() {
     const headtext = new SplitType('#split-head');
     let tl = gsap.timeline();
