@@ -10,6 +10,7 @@ import {
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import LocomotiveScroll from 'locomotive-scroll';
+import { debounceTime, fromEvent } from 'rxjs';
 import Scrollbar from 'smooth-scrollbar';
 import SplitType from 'split-type';
 @Component({
@@ -49,6 +50,11 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {}
   ngAfterViewInit(): void {
     this.initLoader();
+    fromEvent(window, 'resize')
+      .pipe(debounceTime(100))
+      .subscribe(() => {
+        location.reload();
+      });
   }
 
   loader(): Promise<boolean> {
@@ -148,7 +154,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     let photos = gsap.utils.toArray('.photo');
     gsap.set('.photo:not(:first-child)', { y: '100%' });
     tl.to('.background', {
-      '--path': '17%',
+      '--path': '18%',
       duration: 2,
       ease: 'power2',
       scrollTrigger: {
