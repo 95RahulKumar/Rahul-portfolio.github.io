@@ -26,9 +26,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('square') square!: ElementRef;
   @ViewChild('scrollContent') scrollContent!: ElementRef;
   showCloseBtn: boolean = false;
-  constructor(private cdref: ChangeDetectorRef) {
-    gsap.registerPlugin(ScrollTrigger);
-  }
+  constructor(private cdref: ChangeDetectorRef) {}
 
   ngOnDestroy(): void {
     ScrollTrigger.getAll().forEach((t) => t.kill());
@@ -47,7 +45,9 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     this.splitText();
   };
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    gsap.registerPlugin(ScrollTrigger);
+  }
   ngAfterViewInit(): void {
     this.initLoader();
     fromEvent(window, 'resize')
@@ -71,7 +71,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     const bodyScrollBar = Scrollbar?.init(scroller, {
       damping: 0.1,
       renderByPixels: true,
-      delegateTo: document,
+      delegateTo: window,
     });
     ScrollTrigger?.scrollerProxy('.scroller', {
       scrollTop(value) {
