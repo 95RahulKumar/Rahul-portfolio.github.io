@@ -13,6 +13,7 @@ import LocomotiveScroll from 'locomotive-scroll';
 import { debounceTime, fromEvent } from 'rxjs';
 import Scrollbar from 'smooth-scrollbar';
 import SplitType from 'split-type';
+import { SubSink } from 'subsink';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -26,10 +27,12 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('square') square!: ElementRef;
   @ViewChild('scrollContent') scrollContent!: ElementRef;
   showCloseBtn: boolean = false;
+  private subs = new SubSink();
   constructor(private cdref: ChangeDetectorRef) {}
 
   ngOnDestroy(): void {
     ScrollTrigger.getAll().forEach((t) => t.kill());
+    this.subs.unsubscribe();
   }
 
   initLoader = async () => {
@@ -41,8 +44,9 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     this.text();
     this.animate();
     this.applyBg();
-    this.slids();
+    // this.slids();
     this.splitText();
+    this.mobileView();
   };
 
   ngOnInit(): void {
@@ -50,7 +54,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   ngAfterViewInit(): void {
     this.initLoader();
-    fromEvent(window, 'resize')
+    this.subs.sink = fromEvent(window, 'resize')
       .pipe(debounceTime(100))
       .subscribe(() => {
         location.reload();
@@ -120,7 +124,46 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     );
   }
-
+  mobileView() {
+    gsap.fromTo(
+      '.mobile-veiw-first',
+      {
+        opacity: 0,
+        y: 65, // Start position
+      },
+      {
+        opacity: 1,
+        y: 0, // End position
+        duration: 0.5, // Animation duration
+        scrollTrigger: {
+          trigger: '.mobile-veiw-first', // Element to trigger animation
+          start: 'top-=300 center', // Start animation when the top of the element is 80% from the top of the viewport
+          end: 'bottom center', // End animation when the bottom of the element is 20% from the bottom of the viewport
+          scrub: true, // Smooth animation
+          // You can add more options as needed
+        },
+      }
+    );
+    gsap.fromTo(
+      '.mobile-veiw-second',
+      {
+        opacity: 0,
+        y: 65, // Start position
+      },
+      {
+        opacity: 1,
+        y: 0, // End position
+        duration: 0.5, // Animation duration
+        scrollTrigger: {
+          trigger: '.mobile-veiw-second', // Element to trigger animation
+          start: 'top-=300 center', // Start animation when the top of the element is 80% from the top of the viewport
+          end: 'bottom center', // End animation when the bottom of the element is 20% from the bottom of the viewport
+          scrub: true, // Smooth animation
+          // You can add more options as needed
+        },
+      }
+    );
+  }
   text() {
     gsap.fromTo(
       '.white',
@@ -174,7 +217,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
         toggleActions: 'restart none reverse none',
         pin: '.right',
         pinType: 'transform',
-        snap: 1 / (photos.length - 1),
+        // snap: 1 / (photos.length - 1),
         scrub: true, // Use true instead of a value for automatic scrubbing optimization
       },
     });
@@ -261,19 +304,22 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   //sliding technoligy section
   slids() {
     let sections = gsap.utils.toArray('.slid');
-
-    gsap.to(sections, {
-      xPercent: -80 * (sections.length - 1),
-      yPercent: 0,
-      ease: 'power2',
-      scrollTrigger: {
-        trigger: '.slid-container',
-        pin: '.slid',
-        scrub: true,
-        start: 'top center',
-        end: 'bottom center',
+    let parentwidth = document?.getElementById('slid-container')
+      ?.offsetWidth as number;
+    console.log('#####', parentwidth);
+    gsap.fromTo(
+      '.slid',
+      {
+        xPercent: 0,
+        ease: 'linear',
       },
-    });
+      {
+        xPercent: -120,
+        ease: 'linear',
+        repeat: -1, // Setting repeat to -1 for infinite repetition
+        duration: 12, // Setting duration of animation to 8 seconds
+      }
+    );
   }
   // Animation function for showing the overlay menu
   showMenu() {
@@ -312,5 +358,17 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       `https://mail.google.com/mail/?view=cm&fs=1&to=${this.Myemail}`,
       '_blank'
     );
+  }
+
+  noCards() {
+    const innerWidth = window.innerWidth;
+    let cards = 0;
+    if (innerWidth > 1500) cards = 8;
+    if (innerWidth > 1200 && innerWidth < 1500) cards = 8;
+    if (innerWidth > 1000 && innerWidth < 1200) cards = 7;
+    if (innerWidth > 700 && innerWidth < 1000) cards = 5;
+    if (innerWidth > 440 && innerWidth < 700) cards = 4;
+    if (innerWidth > 300 && innerWidth < 440) cards = 3;
+    return cards;
   }
 }

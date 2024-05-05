@@ -1,7 +1,7 @@
 <div *ngIf="showLoader==false">
-  <div class="menu-icon" (click)="showMenu()">
+  <!-- <div class="menu-icon" (click)="showMenu()">
     <svg-icon symbol="menu" w='25' h="25"></svg-icon>
-  </div>
+  </div> -->
   <div class="logo">
     <img src="../assets/image/logo.png" alt="">
   </div>
@@ -24,8 +24,9 @@
       <img class="bg-image" src="../assets/image/new-mockup.png" alt="" srcset="">
       <div class="intoduction">
         <h1 class="heading">Hello,</h1>
-        <p>I am Rahul Kumar</p>
-        <p>A Frontend Engineer.</p>
+        <p>I am Rahul Kumar,<br>
+          a Frontend Engineer.</p>
+        <!-- <p>A Frontend Engineer.</p> -->
         <div class="arrow-wrapper">
           <div class="arrow">
             <svg-icon symbol="arrow-down" w='28' h="28"></svg-icon>
@@ -38,33 +39,35 @@
         </div>
       </div>
     </div>
-    <h1 class="heading tac mb" id="work">Work</h1>
+    <h1 class="heading tac mb" id="work">Projects</h1>
     <div class="gallery">
       <div class="gallery__container">
         <div class="left">
           <div class="detailsWrapper">
             <div class="details section-one">
               <div class="heading ">Portfolio</div>
-              <p>Used Gsap for Animation Stuff</p>
               <p>Simple Portfolio fom me used Tech stack :</p>
-              <p>Html</p>
-              <p>Scss</p>
-              <p>Typescript</p>
-              <p>Angular</p>
+              <p>Used Gsap for Animation Stuff</p>
+              <p>- Html</p>
+              <p>- Scss</p>
+              <p>- Typescript</p>
+              <p>- Angular</p>
               <!-- <div class="text"></div>
-              <div class="text"></div>
-              <div class="text"></div>
-              <div class="text"></div> -->
+                <div class="text"></div>
+                <div class="text"></div>
+                <div class="text"></div> -->
+              <div class="mobile-view mobile-veiw-first first-image"></div>
             </div>
             <div class="details section-two">
               <div class="heading">Ecommerce</div>
               <p>For front-End Used Tech stack :</p>
-              <p>Html</p>
-              <p>Scss</p>
-              <p>Typescript</p>
-              <p>Angular</p>
+              <p>- Html</p>
+              <p>- Scss</p>
+              <p>- Typescript</p>
+              <p>- Angular</p>
               <p>For Backend Used Mongo-DB,Express,NodeJs</p>
-              <p>Included Authentication,jwt,add-to-cart,user and admin controls</p>
+              <p>Developed feature like Authentication,jwt,add-to-cart,user and admin controls</p>
+              <div class="mobile-view mobile-veiw-second second-image"></div>
             </div>
             <!-- <div class="details section-three">
               <div class="headline blue"></div>
@@ -87,8 +90,8 @@
 
       </div>
     </div>
-    <h1 class="heading tac mb mt-2">Technology I Have Used So For</h1>
-    <div class="slid-container">
+    <h1 class="heading tac mb mt-2">Libraries and Frameworks I Have Worked With</h1>
+    <!-- <div id="slid-container" class="slid-container">
       <div class="slid">
         <div class="slid__img">
           <img src="../assets/image/github.png" alt="">
@@ -149,18 +152,125 @@
         </div>
         <p class="slid__text">Rxjs</p>
       </div>
-    </div>
+    </div> -->
+    <carousel class="slid-container" [margin]="15" [cellsToShow]="noCards()" [pauseOnHover]="true" [arrows]="true">
+      <div class="carousel-cell">
+        <div class="slid">
+          <div class="slid__img">
+            <img src="../assets/image/github.png" alt="">
+          </div>
+          <p class="slid__text">GitHub</p>
+        </div>
+      </div>
 
+      <div class="carousel-cell">
+        <div class="slid">
+          <div class="slid__img">
+            <img src="../assets/image/git.png" alt="">
+          </div>
+          <p class="slid__text">Git</p>
+        </div>
+      </div>
+
+      <div class="carousel-cell">
+        <div class="slid">
+          <div class="slid__img">
+            <img src="../assets/image/scss.png" alt="">
+          </div>
+          <p class="slid__text">Sass</p>
+        </div>
+      </div>
+
+
+      <div class="carousel-cell">
+        <div class="slid">
+          <div class="slid__img">
+            <img src="../assets/image/js.png" alt="">
+          </div>
+          <p class="slid__text">JavaScript</p>
+        </div>
+      </div>
+      <div class="carousel-cell">
+        <div class="slid">
+          <div class="slid__img">
+            <img src="../assets/image/css.jpg" alt="">
+          </div>
+          <p class="slid__text">Css</p>
+        </div>
+      </div>
+      <div class="carousel-cell">
+        <div class="slid">
+          <div class="slid__img">
+            <img src="../assets/image/html.png" alt="">
+          </div>
+          <p class="slid__text">Html</p>
+        </div>
+      </div>
+      <div class="carousel-cell">
+        <div class="slid">
+          <div class="slid__img">
+            <img src="../assets/image/angular.png" alt="">
+          </div>
+          <p class="slid__text">Angular</p>
+        </div>
+      </div>
+      <div class="carousel-cell">
+        <div class="slid">
+          <div class="slid__img">
+            <img src="../assets/image/ts.png" alt="">
+          </div>
+          <p class="slid__text">TypeScript</p>
+        </div>
+      </div>
+      <div class="carousel-cell">
+        <div class="slid">
+          <div class="slid__img">
+            <img src="../assets/image/rxjs.png" alt="">
+          </div>
+          <p class="slid__text">Rxjs</p>
+        </div>
+      </div>
+      <div class="carousel-cell">
+        <div class="slid">
+          <div class="slid__img">
+            <img src="../assets/image/ts.png" alt="">
+          </div>
+          <p class="slid__text">TypeScript</p>
+        </div>
+      </div>
+      <div class="carousel-cell">
+        <div class="slid">
+          <div class="slid__img">
+            <img src="../assets/image/rxjs.png" alt="">
+          </div>
+          <p class="slid__text">Rxjs</p>
+        </div>
+      </div>
+      <div class="carousel-cell">
+        <div class="slid">
+          <div class="slid__img">
+            <img src="../assets/image/ts.png" alt="">
+          </div>
+          <p class="slid__text">TypeScript</p>
+        </div>
+      </div>
+      <div class="carousel-cell">
+        <div class="slid">
+          <div class="slid__img">
+            <img src="../assets/image/rxjs.png" alt="">
+          </div>
+          <p class="slid__text">Rxjs</p>
+        </div>
+      </div>
+    </carousel>
     <h1 class="heading tac mt-2">About me</h1>
     <section class="outer">
       <div class="outer-left">
-        <p>Hi, folks I am Rahul Kumar. I have approx 3 years Experiance</p>
-        <p>In UI Development,Currently I am working</p>
-        <p>In a startup,Atai Labs</p>
-        <p>Feel Free to reach out to me If you need an UI</p>
-        <p>Developer</p>
-        <p>location: Hyderabad,near Q-city</p>
-        <p>Contact-no: 8840476418</p>
+        <p>Hi, I'm Rahul Kumar.</p>
+        <p>I have approximately 3 years of experience in UI Development and, currently working at Atai Labs.</p>
+        <p>Please reach out to me if you need an UI Developer.</p>
+        <p><strong style="font-family: 'Dancing Script', cursiv52">Location:</strong> Hyderabad, near Q-City</p>
+        <p><strong style="font-family: 'Dancing Script', cursiv52">Contact Number:</strong> 8840476418</p>
         <a class="resume-btn" href="../assets/pdf/Resume.pdf">
           <span class="white" href="../assets/pdf/Resume.pdf" target="_blank" style="text-decoration:none;">
             View Resume
@@ -202,8 +312,8 @@
           </g>
         </svg>
         <div class="lets-connect__des" (click)="openMail()">
-          <p id="split-text">Click to</p>
-          <h1 id="split-head">Get in touch</h1>
+          <p id="split-text">Click here</p>
+          <h1 id="split-head">to connect with me</h1>
         </div>
       </div>
       <div class="link">

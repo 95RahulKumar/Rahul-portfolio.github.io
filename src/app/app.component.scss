@@ -135,7 +135,7 @@ body {
   background-image:url('../assets/image/first-image.png');
   position: relative;
   overflow: hidden;
-  border-radius:40px;
+  border-radius:15px;
 }
 .first-image{
   background-image:url('../assets/image/first-image.png');
@@ -319,6 +319,12 @@ z-index: 100000;
 
 
 // class for slids
+.carousel-cell{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px !important;
+}
 
 .slid-container{
   height:30vh;
@@ -327,8 +333,7 @@ z-index: 100000;
   align-items: center;
   justify-content: space-between;
   overflow: hidden;
-  gap:20px;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   width: 90%;
   position: relative;
@@ -336,7 +341,7 @@ z-index: 100000;
   .slid{
    width: 100px;
    height:100px;
-   border-radius: 50%;
+   border-radius:5px;
    background:#fff;
    flex-shrink:0;
    transition:  box-shadow 0.5s linear;
@@ -570,7 +575,7 @@ z-index: 100000;
     display: none;
   }
   .details{
-    height:50vh;
+    height:90vh;
   }
   .heading , .other-head{
     font-size:2.5em;
@@ -584,13 +589,24 @@ z-index: 100000;
   }
 
 }
-
+.mobile-view{
+  display:none;
+  height: 250px;
+  margin-top:20px;
+  border-radius:10px;
+}
+.mobile-view:last-child{
+  margin-bottom:30px;
+}
 @media only screen and (max-width: 675px) {
 .outer-left{
   width:100%;
 }
 .outer-right{
   display: none;
+}
+.mobile-view{
+  display:block;
 }
 .link{
   flex-direction: column;
@@ -619,3 +635,5 @@ z-index: 100000;
    text-align: center;
  }
 }
+
+

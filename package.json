@@ -21,11 +21,13 @@
     "@juggle/resize-observer": "^3.4.0",
     "@types/gsap": "^3.0.0",
     "angular-nicescroll": "^0.0.0",
+    "angular-responsive-carousel": "^2.1.2",
     "gsap": "^3.12.5",
     "locomotive-scroll": "^4.1.4",
     "rxjs": "~7.8.0",
     "smooth-scrollbar": "^8.8.4",
     "split-type": "^0.3.4",
+    "subsink": "^1.0.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
